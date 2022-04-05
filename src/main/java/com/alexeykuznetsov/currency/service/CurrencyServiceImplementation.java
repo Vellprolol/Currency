@@ -1,7 +1,7 @@
 package com.alexeykuznetsov.currency.service;
 
 import com.alexeykuznetsov.currency.DAO.CurrencyDAO;
-import com.alexeykuznetsov.currency.entity.Currency;
+import com.alexeykuznetsov.currency.model.Currency;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,6 +1,6 @@
 package com.alexeykuznetsov.currency.service;
 
-import com.alexeykuznetsov.currency.entity.Currency;
+import com.alexeykuznetsov.currency.model.Currency;
 
 import java.util.List;
 

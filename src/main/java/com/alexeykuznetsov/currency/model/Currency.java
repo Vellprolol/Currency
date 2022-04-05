@@ -1,4 +1,4 @@
-package com.alexeykuznetsov.currency.entity;
+package com.alexeykuznetsov.currency.model;
 
 
 import javax.persistence.Column;
@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.*;
 @Table(name = "currency")
 public class Currency {
     @Id
-    @Column(name = "id", updatable = false, nullable = false, unique=true)
+    @Column(name = "id", unique=true)
     @XmlAttribute(name = "ID")
     private String id;
     @Column(name = "name")

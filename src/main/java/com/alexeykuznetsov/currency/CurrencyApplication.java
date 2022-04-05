@@ -1,14 +1,15 @@
 package com.alexeykuznetsov.currency;
 
-import com.alexeykuznetsov.currency.DAO.CurrencyDAOImplementation;
-import com.alexeykuznetsov.currency.entity.Currency;
-import com.alexeykuznetsov.currency.entity.Valutes;
+import com.alexeykuznetsov.currency.model.Currency;
+import com.alexeykuznetsov.currency.model.Role;
+import com.alexeykuznetsov.currency.model.UserRoleEnum;
+import com.alexeykuznetsov.currency.model.Valutes;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class CurrencyApplication {
         SpringApplication.run(CurrencyApplication.class, args);
         CurrencyApplication application = new CurrencyApplication();
         application.fillBase();
+        application.addRoles();
     }
 
     void fillBase() {
@@ -35,5 +37,19 @@ public class CurrencyApplication {
         session.getTransaction().commit();
         session.close();
     }
+
+    void addRoles() {
+        SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Role.class).buildSessionFactory();
+        Session session = factory.getCurrentSession();
+        session.beginTransaction();
+        List<Role> roles = session.createQuery("from Role", Role.class).getResultList();
+        if (roles.isEmpty()) {
+            Role user = new Role();
+            user.setName(UserRoleEnum.ROLE_USER);
+            session.saveOrUpdate(user);
+            session.getTransaction().commit();
+        }
+        session.close();
+   }
 
 }

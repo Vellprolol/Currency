@@ -1,6 +1,6 @@
 package com.alexeykuznetsov.currency.XMLparser;
 
-import com.alexeykuznetsov.currency.entity.Valutes;
+import com.alexeykuznetsov.currency.model.Valutes;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;

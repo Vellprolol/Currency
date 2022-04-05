@@ -1,4 +1,4 @@
-package com.alexeykuznetsov.currency.entity;
+package com.alexeykuznetsov.currency.model;
 
 import javax.xml.bind.annotation.*;
 import java.util.List;
